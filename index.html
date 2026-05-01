@@ -1,299 +1,436 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saat Layar Menyala, Tidurmu Padam dan Depresi Mengambil Tempat</title>
+
 <style>
-body {
-font-family: Georgia, serif;
-max-width: 760px;
-margin: 0 auto;
-padding: 3rem 1.5rem;
-color: #1a1a1a;
-line-height: 1.85;
-font-size: 18px;
-background: #fff;
+.bp__wrap {
+  font-family: Georgia, 'Times New Roman', serif;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  color: #1a1a1a;
+  line-height: 1.85;
+  font-size: 17px;
+  background: #fff;
+  box-sizing: border-box;
 }
 
-.category {
-font-family: sans-serif;
-font-size: 12px;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: #c0392b;
-margin-bottom: 0.8rem;
+
+.bp__wrap *, .bp__wrap *::before, .bp__wrap *::after {
+  box-sizing: border-box;
 }
 
-h1 {
-font-size: 2.3rem;
-font-weight: 700;
-line-height: 1.2;
-margin-bottom: 0.6rem;
-color: #111;
+.bp__category {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c0392b;
+  margin-bottom: 0.75rem;
+  display: block;
 }
 
-/* Highlight di judul */
-h1 mark {
-background: none;
-color: #c0392b;
-font-style: italic;
+.bp__h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111;
+  margin: 0.25rem 0 0.75rem;
+}
+.bp__h1 em {
+  color: #c0392b;
+  font-style: italic;
 }
 
-.subtitle {
-font-size: 1.1rem;
-color: #555;
-font-style: italic;
-margin-bottom: 1.5rem;
-line-height: 1.65;
+.bp__subtitle {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  color: #555;
+  font-style: italic;
+  margin: 0 0 1.25rem;
+  line-height: 1.7;
 }
 
-.meta {
-font-family: sans-serif;
-font-size: 13px;
-color: #999;
-border-top: 1px solid #ddd;
-border-bottom: 1px solid #ddd;
-padding: 0.7rem 0;
-margin-bottom: 2.8rem;
+.bp__meta {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  color: #999;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.65rem 0;
+  margin-bottom: 2rem;
 }
 
-h2 {
-font-size: 1.5rem;
-font-weight: 700;
-margin-top: 3rem;
-margin-bottom: 0.6rem;
-color: #111;
+.bp__button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
 }
 
-h3 {
-font-size: 1.1rem;
-font-weight: 700;
-margin-top: 2rem;
-margin-bottom: 0.4rem;
-color: #222;
+.bp__h2 {
+  font-family: Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #111;
+  margin: 2.5rem 0 0.6rem;
+  line-height: 1.3;
 }
 
-p {
-margin-bottom: 1.2rem;
-color: #222;
-font-size: 12px;
+.bp__h3 {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  margin: 1.75rem 0 0.4rem;
 }
 
-/* Highlight inline di body */
-.hl {
-background: #fff3cd;
-padding: 0 3px;
-border-radius: 2px;
-font-weight: bold;
+
+.bp__p {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  color: #222;
+  margin: 0 0 1.2rem;
+  line-height: 1.85;
 }
 
-.hl-red {
-background: #fde8e8;
-color: #b22222;
-padding: 0 3px;
-border-radius: 2px;
-font-weight: bold;
+.bp__hl {
+  background: #fff3cd;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+.bp__hl-red {
+  background: #fde8e8;
+  color: #b22222;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+.bp__hl-green {
+  background: #e6f4ea;
+  color: #1e6b1e;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 600;
 }
 
-.hl-green {
-background: #e6f4ea;
-color: #276221;
-padding: 0 3px;
-border-radius: 2px;
-font-weight: bold;
+
+.bp__blockquote {
+  border-left: 3px solid #c0392b;
+  margin: 2rem 0;
+  padding: 0.85rem 1.4rem;
+  background: #fdf5f2;
+  font-style: italic;
+  color: #444;
+  font-size: 1.04rem;
+  line-height: 1.75;
 }
 
-blockquote {
-border-left: 3px solid #c0392b;
-margin: 2rem 0;
-padding: 0.8rem 1.5rem;
-background: #fdf5f2;
-font-style: italic;
-color: #444;
-font-size: 1.05rem;
+
+.bp__fact {
+  border-left: 4px solid #111;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14.5px;
+  color: #333;
+  background: #f6f6f6;
+}
+.bp__fact strong {
+  display: block;
+  font-size: 2rem;
+  color: #111;
+  margin-bottom: 0.2rem;
+  font-family: Georgia, serif;
+  line-height: 1.1;
+}
+.bp__fact--red { border-left-color: #c0392b; background: #fdf5f2; }
+.bp__fact--red strong { color: #c0392b; }
+.bp__fact--green { border-left-color: #1e6b1e; background: #f0f9f0; }
+.bp__fact--green strong { color: #1e6b1e; }
+
+
+.bp__chain {
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: #555;
+  padding: 1rem 1.25rem;
+  background: #f6f6f6;
+  border-radius: 6px;
+  line-height: 1.8;
+  margin: 1rem 0 1.4rem;
+}
+.bp__chain span {
+  color: #c0392b;
+  font-weight: 700;
 }
 
-.fact-box {
-background: #f5f5f5;
-border-left: 4px solid #111;
-padding: 1rem 1.4rem;
-margin: 1.5rem 0;
-font-family: sans-serif;
-font-size: 15px;
-color: #333;
+
+.bp__chart {
+  width: 100%;
+  margin: 1.25rem 0 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+}
+.bp__chart iframe {
+  width: 100%;
+  height: 490px;
+  border: none;
+  display: block;
 }
 
-.fact-box strong {
-display: block;
-font-size: 1.9rem;
-color: #111;
-margin-bottom: 0.2rem;
-font-family: Georgia, serif;
+.bp__chart--donut {
+  width: 100%;
+  margin: 1.25rem 0 0.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: transparent;
+}
+.bp__chart--donut iframe {
+  width: 100%;
+  height: 390px;
+  border: none;
+  display: block;
 }
 
-.fact-box.red { border-left-color: #c0392b; }
-.fact-box.red strong { color: #c0392b; }
-
-.fact-box.green { border-left-color: #276221; }
-.fact-box.green strong { color: #276221; }
-
-
-.chart-wrap {
-width: 100%;
-margin: 2rem 0;
-border: 1px solid #e0e0e0;
-border-radius: 8px;
-overflow: hidden;
-background: #fafafa;
-}
- 
-.chart-wrap iframe {
-width: 100%;
-height: 480px;
-border: none;
-display: block;
-}
- 
-.chart-caption {
-font-family: sans-serif;
-font-size: 12px;
-color: #999;
-text-align: center;
-padding: 0.5rem 0 0.7rem;
-border-top: 1px solid #eee;
+.bp__chart-caption {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+  padding: 0.45rem 0 0.5rem;
+  border-top: 1px solid #eee;
 }
 
-hr {
-border: none;
-border-top: 1px solid #e5e5e5;
-margin: 3rem 0;
+
+.bp__hr {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin: 2.5rem 0;
 }
 
-.note {
-font-size: 13px;
-color: #999;
-font-family: sans-serif;
+
+.bp__note {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12.5px;
+  color: #999;
+  line-height: 1.7;
+  margin-top: 2rem;
+}
+.bp__note a {
+  color: #c0392b;
+  text-decoration: none;
+}
+.bp__note a:hover {
+  text-decoration: underline;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .bp__wrap {
+    padding: 1.25rem 1rem 2rem;
+    font-size: 16px;
+  }
+  .bp__h1 { font-size: 1.55rem; }
+  .bp__h2 { font-size: 1.25rem; }
+  .bp__chart iframe { height: 380px; }
+  .bp__chart--donut iframe { height: 320px; }
+  .bp__fact strong { font-size: 1.6rem; }
 }
 </style>
-</head>
-<body>
+
+<div class="bp__wrap">
+
+  <span class="bp__category">Kesehatan Mental &amp; Data</span>
+
+  <h1 class="bp__h1">
+    Saat Layar Menyala, Tidurmu Padam<br>
+    dan <em>Depresi</em> Mengambil Tempat
+  </h1>
+
+  <p class="bp__subtitle">
+    Data dari ratusan remaja membuktikan satu hal yang kita sering abaikan. Bukan kecanduan yang paling berbahaya, melainkan malam-malam yang hilang demi sebuah layar.
+  </p>
+
+  <p class="bp__meta">Oleh Akmal &nbsp;·&nbsp; 12 Juni 2024</p>
 
 
-<h1>Saat Layar Menyala, Tidurmu Padam<br>dan <mark>Depresi</mark> Mengambil Tempat</h1>
+  <!-- ── BAGIAN 1 ── -->
+  <h2 class="bp__h2">Angka yang Tidak Bisa Dibantah</h2>
 
-<p class="subtitle">Data dari ratusan remaja membuktikan satu hal yang kita sering abaikan: bukan kecanduan yang paling berbahaya, melainkan malam-malam yang hilang demi sebuah layar.</p>
+  <p class="bp__p">
+    Kita sudah sering mendengar peringatan tentang media sosial dan kesehatan mental. Tapi peringatan tanpa data hanyalah opini. Maka kami menganalisis data dari ratusan remaja usia 14–19 tahun — mencakup kebiasaan digital, pola tidur, kondisi psikologis, hingga indikasi depresi klinis.
+  </p>
 
-<p class="meta">Oleh Akmal | 12 Juni 2024</p>
-
-<h2>Pembuka: Angka yang Tidak Bisa Dibantah</h2>
-
-<p>Kita sudah sering mendengar peringatan tentang media sosial dan kesehatan mental. Tapi peringatan tanpa data hanyalah opini. Maka kami menganalisis data dari ratusan remaja usia 14–20 tahun mencakup kebiasaan digital, pola tidur, kondisi psikologis, hingga indikasi depresi klinis.</p>
-
-<p>Hasilnya mengejutkan bukan karena menunjukkan sesuatu yang tak terduga, melainkan karena membuktikan secara kuantitatif apa yang selama ini hanya kita rasakan: <span class="hl-red">media sosial dan depresi memang berkaitan</span> tapi bukan lewat jalur yang paling sering kita sangka.</p>
+  <p class="bp__p">
+    Hasilnya mengejutkan bukan karena menunjukkan sesuatu yang tak terduga, melainkan karena membuktikan secara kuantitatif apa yang selama ini hanya kita rasakan: <span class="bp__hl-red">media sosial dan depresi memang berkaitan</span> — tapi bukan lewat jalur yang paling sering kita sangka.
+  </p>
 
 
-<h2>Temuan 1: Tidur Adalah Kunci, Bukan Kecanduan</h2>
+  <!-- ── BAGIAN 2 ── -->
+  <h2 class="bp__h2">Temuan 1: Tidur Adalah Kunci, Bukan Kecanduan</h2>
 
-<p>Pertanyaan yang paling banyak diasumsikan: apakah remaja yang kecanduan media sosial lebih rentan depresi? Secara intuitif, jawabannya terasa jelas. Namun data justru menunjukkan sesuatu yang berbeda.</p>
+  <p class="bp__p">
+    Pertanyaan yang paling banyak diasumsikan: apakah remaja yang kecanduan media sosial lebih rentan depresi? Secara intuitif, jawabannya terasa jelas. Namun data justru menunjukkan sesuatu yang berbeda.
+  </p>
 
-<div class="chart-wrap">
-<iframe
-src="https://akmalll45.github.io/Visualisas_blog/chart3_heatmap.html"
-title="Heatmap Korelasi Antar Variabel"
-loading="lazy"
-allowfullscreen>
-</iframe>
-<p class="chart-caption">Gambar 1 Heatmap Korelasi Antar Variabel · Sumber: analisis data primer</p>
+  <!-- CHART 1: HEATMAP -->
+  <div class="bp__chart">
+    <iframe
+      src="https://akmalll45.github.io/Visualisas_blog/chart3_heatmap.html"
+      title="Heatmap Korelasi Antar Variabel"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+    <p class="bp__chart-caption">Gambar 1 — Heatmap Korelasi Antar Variabel &nbsp;·&nbsp; Sumber: analisis data primer</p>
+  </div>
+
+  <p class="bp__p">
+    Dari heatmap korelasi di atas, korelasi antara <span class="bp__hl">kecanduan dan depresi hanya sebesar −0.01</span> — hampir nol, dan bahkan arahnya negatif. Artinya, tinggi-rendahnya skor kecanduan seseorang <em>nyaris tidak menjelaskan apa-apa</em> soal apakah ia mengalami depresi atau tidak.
+  </p>
+
+  <p class="bp__p">
+    Yang justru paling kuat berkorelasi dengan depresi adalah <span class="bp__hl-red">jam tidur, dengan nilai −0.19</span>. Ini adalah korelasi <em>negatif</em> — semakin sedikit tidur seseorang, semakin tinggi kemungkinan ia menunjukkan indikasi depresi.
+  </p>
+
+  <div class="bp__fact bp__fact--red">
+    <strong>−0.19</strong>
+    Korelasi antara jam tidur dan depresi — angka negatif terkuat dalam seluruh dataset. Semakin pendek waktu tidur, semakin besar risiko depresi.
+  </div>
+
+  <p class="bp__p">
+    Ini bukan kebetulan. Tidur adalah sistem pemulihan otak. Ketika tidur terpangkas — apakah karena <em>scroll</em> hingga larut atau layar yang menyala di sisi kepala — otak tidak mendapat waktu untuk memproses emosi, mengonsolidasi memori, dan menyeimbangkan kadar neurotransmiter. Dalam jangka panjang, kondisi ini menciptakan lingkungan biologis yang subur bagi depresi.
+  </p>
+
+
+  <!-- ── BAGIAN 3 ── -->
+  <h2 class="bp__h2">Temuan 2: Media Sosial Memang Berkontribusi — Tapi Lewat Cara yang Lebih Halus</h2>
+
+  <p class="bp__p">
+    Bukan berarti media sosial bebas dari tanggung jawab. Data menunjukkan bahwa <span class="bp__hl">jam penggunaan media sosial berkorelasi positif dengan depresi sebesar 0.18</span> — cukup signifikan dan konsisten.
+  </p>
+
+  <blockquote class="bp__blockquote">
+    Media sosial tidak langsung "menyebabkan" depresi. Ia bekerja perlahan — dengan merampas tidur, membangun stres, dan membiarkan kecemasan tumbuh tanpa kita sadari.
+  </blockquote>
+
+  <p class="bp__p">
+    Pola ini terbaca jelas di heatmap: <span class="bp__hl-red">stres dan kecemasan masing-masing berkorelasi 0.17 dengan depresi</span>. Dan keduanya berkaitan dengan durasi penggunaan media sosial harian. Ini membentuk sebuah rantai:
+  </p>
+
+  <div class="bp__chain">
+    Lebih lama di media sosial &nbsp;→&nbsp; Stres &amp; kecemasan meningkat &nbsp;→&nbsp; Tidur berkurang &nbsp;→&nbsp; <span>Risiko depresi naik</span>
+  </div>
+
+  <p class="bp__p">
+    Perhatikan bahwa masalahnya bukan semata-mata "berapa jam di sosmed" — melainkan efek domino yang ditimbulkannya pada tidur dan kondisi psikologis seseorang.
+  </p>
+
+
+  <!-- ── BAGIAN 4 ── -->
+  <h2 class="bp__h2">Temuan 3: Perempuan Menanggung Beban Lebih Besar</h2>
+
+  <p class="bp__p">
+    Ketika data depresi dipecah berdasarkan gender, gambar yang muncul cukup jelas dan perlu mendapat perhatian serius.
+  </p>
+
+  <!-- CHART 2: DONUT -->
+  <div class="bp__chart--donut">
+    <iframe
+      src="https://akmalll45.github.io/Visualisas_blog/chart5_donut.html"
+      title="Proporsi Depresi berdasarkan Gender"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+    <p class="bp__chart-caption">Gambar 2 — Proporsi Depresi berdasarkan Gender &nbsp;·&nbsp; Sumber: analisis data primer</p>
+  </div>
+
+  <p class="bp__p">
+    Dari seluruh kasus depresi yang teridentifikasi dalam dataset, <span class="bp__hl-red">54.8% dialami oleh perempuan</span> — lebih dari separuhnya. Laki-laki menyumbang 45.2% sisanya.
+  </p>
+
+  <div class="bp__fact bp__fact--red">
+    <strong>54.8%</strong>
+    Proporsi kasus depresi pada remaja perempuan dalam dataset — lebih tinggi dibanding laki-laki yang sebesar 45.2%.
+  </div>
+
+  <p class="bp__p">
+    Perbedaan ini kemungkinan besar bukan soal siapa yang "lebih lemah," melainkan soal <em>bagaimana</em> masing-masing gender berinteraksi dengan media sosial. Remaja perempuan cenderung lebih banyak terlibat dalam perbandingan sosial — membandingkan penampilan, gaya hidup, dan popularitas dengan standar yang dipajang di <em>feed</em>. Tekanan komparasi ini, dipadukan dengan kurang tidur, menciptakan tekanan psikologis yang akumulatif.
+  </p>
+
+  <p class="bp__p">
+    Sementara itu, laki-laki cenderung mengekspresikan tekanan dengan cara yang berbeda — dan data menunjukkan bahwa angka mereka pun tidak bisa diremehkan: hampir satu dari dua kasus depresi dalam studi ini adalah laki-laki.
+  </p>
+
+
+  <!-- ── BAGIAN 5 ── -->
+  <h2 class="bp__h2">Yang Tidak Berpengaruh Signifikan — dan Mengapa Ini Penting</h2>
+
+  <p class="bp__p">
+    Sama pentingnya dengan apa yang berkorelasi adalah apa yang <em>tidak</em> berkorelasi. Data menunjukkan bahwa <span class="bp__hl">aktivitas fisik dan kecanduan media sosial hampir tidak berkorelasi langsung dengan depresi</span> (masing-masing −0.02 dan −0.01).
+  </p>
+
+  <p class="bp__p">
+    Ini penting untuk dipahami agar kita tidak salah sasaran dalam intervensi. Selama ini banyak program kesehatan digital berfokus pada pengurangan "kecanduan" atau penambahan olahraga — keduanya tidak salah, tapi data menunjukkan bahwa keduanya bukan faktor penentu utama dalam konteks depresi remaja ini.
+  </p>
+
+  <p class="bp__p">
+    Yang perlu diprioritaskan justru lebih mendasar: <span class="bp__hl-green">kualitas dan durasi tidur malam</span>, serta pengelolaan stres dan kecemasan yang ditimbulkan oleh paparan konten media sosial sehari-hari.
+  </p>
+
+
+  <!-- ── BAGIAN 6 ── -->
+  <h2 class="bp__h2">Interpretasi: Apa yang Seharusnya Kita Lakukan?</h2>
+
+  <p class="bp__p">
+    Data ini tidak datang untuk menyalahkan siapa-siapa. Remaja bukan lemah, orang tua bukan lengah, dan teknologi bukan musuh. Yang perlu dipersoalkan adalah <span class="bp__hl">sistem yang secara aktif mendorong penggunaan tanpa batas</span> — algoritma yang dirancang untuk membuat kita terus <em>scroll</em>, tepat sebelum tidur, tepat di momen-momen ketika otak paling butuh istirahat.
+  </p>
+
+  <blockquote class="bp__blockquote">
+    Pertanyaannya bukan "apakah kamu kecanduan?" — Pertanyaan yang lebih tepat adalah: "jam berapa kamu meletakkan ponselmu tadi malam, dan jam berapa kamu akhirnya tertidur?"
+  </blockquote>
+
+  <p class="bp__p">
+    Dari seluruh variabel yang dianalisis, satu pesan paling konsisten yang muncul dari data adalah ini: <span class="bp__hl-red">tidur yang cukup adalah perlindungan paling nyata dari depresi</span> — lebih dari olahraga, lebih dari seberapa sering atau jarang kita membuka aplikasi.
+  </p>
+
+  <p class="bp__p">
+    Dan sayangnya, media sosial adalah salah satu perampas tidur yang paling efisien yang pernah diciptakan manusia.
+  </p>
+
+
+  <!-- ── PENUTUP ── -->
+  <h2 class="bp__h2">Penutup</h2>
+
+  <p class="bp__p">
+    Data sudah berbicara dengan cukup jelas. Bukan kecanduan yang paling berbahaya — melainkan malam-malam yang dihabiskan dengan layar menyala, sementara tubuh dan pikiran yang kelelahan terus menunggu izin untuk beristirahat.
+  </p>
+
+  <p class="bp__p">
+    Jika ada satu hal yang bisa diambil dari analisis ini, mungkin ini: <span class="bp__hl">matikan layarmu lebih awal malam ini</span>. Bukan karena aturan tapi karena data menunjukkan bahwa keputusan kecil itu, dilakukan secara konsisten, bisa menjadi salah satu penjaga kesehatan jiwa yang paling sederhana dan paling nyata.
+  </p>
+
+  <p class="bp__p"><em>Visualisasi interaktif dari analisis ini dapat dieksplorasi pada grafik di atas.</em></p>
+  <div>
+    <button class="bp__button" onclick="window.open('https://github.com/Akmalll45/Visualisas_blog', '_blank')">
+      Downdload Data &amp; Visualisasi Interaktif
+    </button>
+  </div>
+
+  <div class="bp__hr"></div>
+
+  <p class="bp__note">
+    <strong>Catatan:</strong> Data yang digunakan dalam analisis ini bersifat <strong>hipotetik</strong> dan bersumber dari dataset publik di
+    <a href="https://www.kaggle.com/datasets/algozee/teenager-menthal-healy" target="_blank" rel="noopener">Kaggle</a>.
+    Data ini tidak merepresentasikan populasi nyata secara langsung dan dimaksudkan semata-mata untuk keperluan eksplorasi dan pembelajaran analisis data.
+    Interpretasi dalam tulisan ini tidak dapat dijadikan dasar klaim klinis atau kebijakan.
+  </p>
+
 </div>
-
-
-<p>Dari heatmap korelasi di atas, korelasi antara <span class="hl">kecanduan dan depresi hanya sebesar -0.01</span> hampir nol, dan bahkan arahnya negatif. Artinya, tinggi-rendahnya skor kecanduan seseorang <em>nyaris tidak menjelaskan apa-apa</em> soal apakah ia mengalami depresi atau tidak.</p>
-
-<p>Yang justru paling kuat berkorelasi dengan depresi adalah <span class="hl-red">jam tidur, dengan nilai -0.19</span>. Ini adalah korelasi <em>negatif</em> semakin sedikit tidur seseorang, semakin tinggi kemungkinan ia menunjukkan indikasi depresi.</p>
-
-<div class="fact-box red">
-<strong>-0.19</strong>
-Korelasi antara jam tidur dan depresi angka negatif terkuat dalam seluruh dataset. Semakin pendek waktu tidur, semakin besar risiko depresi.
-</div>
-
-<p>Ini bukan kebetulan. Tidur adalah sistem pemulihan otak. Ketika tidur terpangkas apakah karena scroll hingga larut atau layar yang menyala di sisi kepala otak tidak mendapat waktu untuk memproses emosi, mengonsolidasi memori, dan menyeimbangkan kadar neurotransmiter. Dalam jangka panjang, kondisi ini menciptakan lingkungan biologis yang subur bagi depresi.</p>
-
-
-<h2>Temuan 2: Media Sosial Memang Berkontribusi Tapi Lewat Cara yang Lebih Halus</h2>
-
-<p>Bukan berarti media sosial bebas dari tanggung jawab. Data menunjukkan bahwa <span class="hl">jam penggunaan media sosial berkorelasi positif dengan depresi sebesar 0.18</span> cukup signifikan dan konsisten.</p>
-
-<blockquote>
-Media sosial tidak langsung "menyebabkan" depresi. Ia bekerja perlahan dengan merampas tidur, membangun stres, dan membiarkan kecemasan tumbuh tanpa kita sadari.
-</blockquote>
-
-<p>Pola ini terbaca jelas di heatmap: <span class="hl-red">stres dan kecemasan masing-masing berkorelasi 0.17 dengan depresi</span>. Dan keduanya berkaitan dengan durasi penggunaan media sosial harian. Ini membentuk sebuah rantai:</p>
-
-<p style="text-align:center; font-family:sans-serif; font-size:15px; color:#555; padding: 1rem; background:#f5f5f5; border-radius:6px;">
-Lebih lama di media sosial → Stres &amp; kecemasan meningkat → Tidur berkurang → <span style="color:#c0392b; font-weight:bold;">Risiko depresi naik</span>
-</p>
-
-<p>Perhatikan bahwa masalahnya bukan semata-mata "berapa jam di sosmed" melainkan efek domino yang ditimbulkannya pada tidur dan kondisi psikologis seseorang.</p>
-
-
-<h2>Temuan 3: Perempuan Menanggung Beban Lebih Besar</h2>
-
-<p>Ketika data depresi dipecah berdasarkan gender, gambar yang muncul cukup jelas dan perlu mendapat perhatian serius.</p>
-
-<!-- SISIPKAN DONUT CHART DI SINI -->
-<div class="chart-wrap">
-  <iframe
-    src="https://USERNAME.github.io/REPO-NAME/chart5_donut.html"
-    title="Proporsi Depresi berdasarkan Gender"
-    loading="lazy"
-    allowfullscreen>
-  </iframe>
-  <p class="chart-caption">Gambar 2 — Proporsi Depresi berdasarkan Gender · Sumber: analisis data primer</p>
-</div>
-
-<p>Dari seluruh kasus depresi yang teridentifikasi dalam dataset, <span class="hl-red">54.8% dialami oleh perempuan</span> lebih dari separuhnya. Laki-laki menyumbang 45.2% sisanya.</p>
-
-<div class="fact-box red">
-<strong>54.8%</strong>
-Proporsi kasus depresi pada remaja perempuan dalam dataset lebih tinggi dibanding laki-laki yang sebesar 45.2%.
-</div>
-
-<p>Perbedaan ini kemungkinan besar bukan soal siapa yang "lebih lemah," melainkan soal <em>bagaimana</em> masing-masing gender berinteraksi dengan media sosial. Remaja perempuan cenderung lebih banyak terlibat dalam perbandingan sosial membandingkan penampilan, gaya hidup, dan popularitas dengan standar yang dipajang di feed. Tekanan komparasi ini, dipadukan dengan kurang tidur, menciptakan tekanan psikologis yang akumulatif.</p>
-
-<p>Sementara itu, laki-laki cenderung mengekspresikan tekanan dengan cara yang berbeda dan data menunjukkan bahwa angka mereka pun tidak bisa diremehkan: hampir satu dari dua kasus depresi dalam studi ini adalah laki-laki.</p>
-
-
-<h2>Yang Tidak Berpengaruh Signifikan dan Mengapa Ini Penting</h2>
-
-<p>Sama pentingnya dengan apa yang berkorelasi adalah apa yang <em>tidak</em> berkorelasi. Data menunjukkan bahwa <span class="hl">aktivitas fisik dan kecanduan media sosial hampir tidak berkorelasi langsung dengan depresi</span> (masing-masing -0.02 dan -0.01).</p>
-
-<p>Ini penting untuk dipahami agar kita tidak salah sasaran dalam intervensi. Selama ini banyak program kesehatan digital berfokus pada pengurangan "kecanduan" atau penambahan olahraga keduanya tidak salah, tapi data menunjukkan bahwa keduanya bukan faktor penentu utama dalam konteks depresi remaja ini.</p>
-
-<p>Yang perlu diprioritaskan justru lebih mendasar: <span class="hl-green">kualitas dan durasi tidur malam</span>, serta pengelolaan stres dan kecemasan yang ditimbulkan oleh paparan konten media sosial sehari-hari.</p>
-
-
-<h2>Interpretasi: Apa yang Seharusnya Kita Lakukan?</h2>
-
-<p>Data ini tidak datang untuk menyalahkan siapa-siapa. Remaja bukan lemah, orang tua bukan lengah, dan teknologi bukan musuh. Yang perlu dipersoalkan adalah <span class="hl">sistem yang secara aktif mendorong penggunaan tanpa batas</span> algoritma yang dirancang untuk membuat kita terus scroll, tepat sebelum tidur, tepat di momen-momen ketika otak paling butuh istirahat.</p>
-
-<blockquote>
-Pertanyaannya bukan "apakah kamu kecanduan?" Pertanyaan yang lebih tepat adalah: "jam berapa kamu meletakkan ponselmu tadi malam dan jam berapa kamu akhirnya tertidur?"
-</blockquote>
-
-<p>Dari seluruh variabel yang dianalisis, satu pesan paling konsisten yang muncul dari data adalah ini: <span class="hl-red">tidur yang cukup adalah perlindungan paling nyata dari depresi</span> lebih dari olahraga, lebih dari seberapa sering atau jarang kita membuka aplikasi.</p>
-
-<p>Dan sayangnya, media sosial adalah salah satu perampas tidur yang paling efisien yang pernah diciptakan manusia.</p>
-
-
-<h2>Penutup</h2>
-
-<p>Data sudah berbicara dengan cukup jelas. Bukan kecanduan yang paling berbahaya melainkan malam-malam yang dihabiskan dengan layar menyala, sementara tubuh dan pikiran yang kelelahan terus menunggu izin untuk beristirahat.</p>
-
-<p>Jika ada satu hal yang bisa diambil dari analisis ini, mungkin ini: <span class="hl">matikan layarmu lebih awal malam ini</span>. Bukan karena aturan tapi karena data menunjukkan bahwa keputusan kecil itu, dilakukan secara konsisten, bisa menjadi salah satu penjaga kesehatan jiwa yang paling sederhana dan paling nyata.</p>
-
-<p><em>Visualisasi interaktif dari analisis ini dapat dieksplorasi pada grafik di atas.</em></p>
-
-
-</body>
-</html>

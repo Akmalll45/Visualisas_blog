@@ -5,9 +5,9 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import numpy as np
 
-# ─────────────────────────────────────────
+
 # 1. LOAD & PERSIAPAN DATA
-# ─────────────────────────────────────────
+
 df = pd.read_csv("Data_visualisasi_blog.csv", sep=";")
  
 # Label lebih deskriptif
@@ -56,9 +56,8 @@ AXIS_STYLE = dict(
     showgrid=True,
 )
  
-# ─────────────────────────────────────────
 # CHART 1 – Distribusi Jam Sosmed per Platform
-# ─────────────────────────────────────────
+
 fig1 = go.Figure()
 platform_colors = {
     "Instagram": COLORS["instagram"],
@@ -86,9 +85,9 @@ fig1.update_layout(
     height=420,
 )
  
-# ─────────────────────────────────────────
+
 # CHART 2 – Jam Sosmed vs Performa Akademik (Scatter)
-# ─────────────────────────────────────────
+
 fig2 = px.scatter(
     df,
     x="daily_social_media_hours",
@@ -116,9 +115,9 @@ fig2.update_layout(
 )
 fig2.update_traces(marker=dict(size=5))
  
-# ─────────────────────────────────────────
+
 # CHART 3 – Heatmap Korelasi Variabel Numerik
-# ─────────────────────────────────────────
+
 num_cols = ["daily_social_media_hours", "sleep_hours", "screen_time_before_sleep",
             "academic_performance", "physical_activity",
             "stress_level", "anxiety_level", "addiction_level", "depression_label"]
@@ -150,9 +149,9 @@ fig3.update_layout(
     yaxis=dict(autorange="reversed", tickcolor="rgba(255,255,255,0.3)"),
 )
  
-# ─────────────────────────────────────────
+
 # CHART 4 – Tingkat Stres, Kecemasan & Kecanduan per Platform (Bar Grouped)
-# ─────────────────────────────────────────
+
 grp = df.groupby("platform_id")[["stress_level", "anxiety_level", "addiction_level"]].mean().reset_index()
 fig4 = go.Figure()
 bar_metrics = {"stress_level": ("Stres", COLORS["accent1"]),
@@ -179,9 +178,9 @@ fig4.update_layout(
     height=420,
 )
  
-# ─────────────────────────────────────────
+
 # CHART 5 – Proporsi Depresi per Gender (Donut)
-# ─────────────────────────────────────────
+
 gender_dep = df[df["depression_label"] == 1]["gender_id"].value_counts()
 fig5 = go.Figure(go.Pie(
     labels=gender_dep.index,
@@ -203,9 +202,9 @@ fig5.update_layout(
     legend=dict(bgcolor="rgba(0,0,0,0.4)"),
 )
  
-# ─────────────────────────────────────────
+
 # CHART 6 – Jam Tidur vs Jam Sosmed (Bubble by Addiction)
-# ─────────────────────────────────────────
+
 fig6 = px.scatter(
     df,
     x="daily_social_media_hours",
@@ -231,9 +230,9 @@ fig6.update_layout(
     yaxis=AXIS_STYLE,
 )
  
-# ─────────────────────────────────────────
+
 # CHART 7 – Distribusi Usia Pengguna per Platform (Histogram)
-# ─────────────────────────────────────────
+
 fig7 = px.histogram(
     df,
     x="age",
@@ -254,9 +253,9 @@ fig7.update_layout(
     yaxis=dict(title="Jumlah Responden", **AXIS_STYLE),
 )
  
-# ─────────────────────────────────────────
+
 # CHART 8 – Radar: Profil Rata-rata per Platform
-# ─────────────────────────────────────────
+
 radar_metrics = ["daily_social_media_hours", "sleep_hours", "academic_performance",
                  "stress_level", "anxiety_level", "addiction_level"]
 radar_labels  = ["Jam Sosmed", "Jam Tidur", "Performa\nAkademik",
@@ -325,9 +324,8 @@ fig9.update_layout(
     height=400,
 )
  
-# ─────────────────────────────────────────
 # CHART 10 – Sunburst: Gender > Platform > Depresi
-# ─────────────────────────────────────────
+
 sun_df = df.groupby(["gender_id", "platform_id", "depression_label_str"]).size().reset_index(name="count")
 fig10 = px.sunburst(
     sun_df,
